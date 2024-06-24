@@ -40,3 +40,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/001_TIP/
+.env
+/allure-report/
+/allure-results/
