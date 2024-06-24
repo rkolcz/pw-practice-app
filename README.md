@@ -5,7 +5,7 @@ The original repo is here: https://github.com/akveo/ngx-admin
 ___
 ### Introduction to Test Framework
 
-This framework automates and validates the UI of the Ngx-Admin application using Playwright. Built on the Page Object Model (POM) pattern, it enhances maintainability and scalability. The architecture is modular, divided into **Tests** and **Code** areas, making code management and testing easier. The `HelperBase` class avoids code duplication, increasing efficiency. The `PageManager` class centrally manages instances of all Page Objects, facilitating easy access to different application pages. Below is a detailed description of the framework's architecture and its components.
+This framework automates and validates the UI of the Ngx-Admin application using Playwright. Built on the Page Object Model (POM) pattern, it enhances maintainability and scalability. The architecture is modular, divided into **Tests** and **Code** areas, making code management and testing easier. The `HelperBase` class avoids code duplication, increasing efficiency. The `PageManager` class centrally manages instances of all Page Objects. Below is a detailed description of the framework's architecture and its components.
 
 These tests were developed based on the training provided by Test Automation Engineer <a href="https://github.com/bondar-artem">Artem Bondar</a>
 
@@ -21,47 +21,29 @@ Test framework has been carefully designed to ensure modularity and ease of code
 Architecture is divided into two main areas: **Tests** and **Code**.
 
 #### Tests Area
-The tests area contains files with tests that use the Page Object Model (POM) to interact with the application pages.
-
-- **usePageObjects.spec.ts**: This file contains tests that utilize the Page Object Model (POM) to interact with different pages of the application. It serves as an example of how to structure and use Page Objects in tests.
-
-- **uiComponents.spec.ts**: This file contains a set of tests that validate various UI components of the application, ensuring that they function correctly and meet the specified requirements.
-
-- **firstTest.spec.ts**: This file contains introductory tests that verify basic functionalities of the application. It is typically used as a starting point for setting up and running initial tests.
-
-- **dragAndDropWithiFrames.spec.ts**: This file contains tests that focus on drag-and-drop functionalities, including interactions within iframes. It ensures that these complex interactions work as expected.
-
-- **autoWaiting.spec.ts**: This file contains tests that demonstrate and verify the automatic waiting features provided by Playwright. It ensures that the application handles asynchronous operations and dynamic content loading correctly.
-
-These test files use instances managed by the **PageManager** to interact with the application pages.
+The tests area contains files with tests that use the Page Object Model (POM) to interact with the application pages. These test files use instances managed by the **PageManager** to interact with the application pages.
 
 #### Code Area
 
-The code area contains classes representing individual pages of the application and helper classes.
+The code area contains classes representing individual pages of the application and helper classes. Where the **PageManager** centrally manages instances of all Page Objects. t allows easy access to different pages of the application through centralized instance management. The code area also contains **HelperBase**: A base helper class that contains frequently used methods. This avoids code duplication.
 
-- **PageManager**: A class that manages instances of all Page Objects. It allows easy access to different pages of the application through centralized instance management.
-  - **navigateTo()**: Method returning an instance of the `NavigationPage` class.
-  - **onFormLayoutsPage()**: Method returning an instance of the `FormLayoutsPage` class.
-  - **onDatepickerPage()**: Method returning an instance of the `DatepickerPage` class.
+___
+### Dependencies
 
-- **NavigationPage**: A class representing navigation in the application.
-- **FormLayoutsPage**: A class representing the form layouts page.
-- **DatepickerPage**: A class representing the date picker page.
+- Playwright v1.43.1
+- Node v18.20.2
+- npm v9.6.5
+- VSCode 1.88.1 (Universal)
+- Applitools v1.17.0
+- Faker v8.4.1
+- Allure-playwright v3.0.0-beta.3
 
-#### HelperBase
 
-- **HelperBase**: A base helper class that contains frequently used methods. This avoids code duplication, as methods defined in `HelperBase` can be used by all Page Object classes that inherit from it.
-
-#### Integration
-
-- Test files in the **Tests** area use instances managed by **PageManager** to interact with the application pages, allowing for easy and efficient testing.
-- **PageManager** manages instances of the Page Object classes, providing a central place for their creation and access.
-- Page Object classes can inherit from **HelperBase**, enabling the use of common methods without duplicating code.
 ___
 ### Installation Guidelines
 Download the code. The easiest way to do that is to clone GitHub repository:
   ```sh
-  git clone https://
+  git clone https://github.com/rkolcz/pw-practice-app
   ```
 After clone is completed, you need to install npm modules:
   ```sh
@@ -79,11 +61,12 @@ To run tests, make sure you have installed Playwright.
 ```
 npm init playwright@latest
 ```
-or
+or if needed
 ```
 npm init playwright@latest --force
 ```
 
+___
 ### Run tests Guidelines
 ###### Run all test in order
 - Browser: all
@@ -101,8 +84,6 @@ npx playwright test --headed
 ```
 npx playwright test --ui
 ```
----
+___
 
-need:
-"@playwright/test": "^1.43.1",
-"@faker-js/faker": "^8.4.1",
+IMPORTANT: to run the tests from `main`, you'll need to setup your [.env](.env) following the [.env.example](.env.example), otherwise many tests will fail
