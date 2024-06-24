@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bondar-artem/pw-practice-app.git"
+    "url": "git+https://github.com/rkolcz/pw-practice-app.git"
   },
   "scripts": {
     "ng": "ng",
@@ -81,9 +81,9 @@
   },
   "description": "This is modified and more lightweight version of original application to practice UI Automation with Playwright.",
   "bugs": {
-    "url": "https://github.com/bondar-artem/pw-practice-app/issues"
+    "url": "https://github.com/rkolcz/pw-practice-app/issues"
   },
-  "homepage": "https://github.com/bondar-artem/pw-practice-app#readme",
+  "homepage": "https://github.com/rkolcz/pw-practice-app#readme",
   "main": "index.js",
   "author": ""
 }
